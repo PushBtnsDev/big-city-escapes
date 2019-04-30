@@ -214,4 +214,4 @@ def main
     end
 end
 
-player_change_health_test
+main
