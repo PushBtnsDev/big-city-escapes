@@ -142,7 +142,7 @@ module NewYork
                         print ": "
                         dest_input = gets.strip.to_i() 
                     end
-                    puts "\n" * 20
+                    puts "\n" * 50
                     return "exit"
                 else 
                     puts "You try to open the crate with your hands but fail, you need a more powerful tool to open the crate"
@@ -207,8 +207,8 @@ module NewYork
         continue = 0
         while continue != 1
             print "Press 1 to continue: "
-            continue = gets.strip.to_i()
-            puts "\n" * 20
+            continue = gets.strip.to_i
+            puts "\n" * 50
         end
     
         puts "Arriving at Central Park, you have made it to the lake in the middle and decided to hire a boat to take in the sights of the Big Apple! As you are paddling out towards the centre of the lake, you drop your paddle and it splinters a hole through the bottom of the boat and has sprung a leak! You need to escape the lake as soon as possible before you sink. "
@@ -216,13 +216,13 @@ module NewYork
         continue = 0
         while continue != 1
             print "Press 1 to continue: "
-            continue = gets.strip.to_i()
-            puts "\n" * 20
+            continue = gets.strip.to_i
+            puts "\n" * 50
         end
     end
 
-    def self.boat_escape(player)
-        boat = TheBoat.new("boat")
+    def self.boat_escape player
+        boat = TheBoat.new "boat"
     
         fire_axe_hash = {
             item: "Fire Axe",
@@ -245,11 +245,11 @@ module NewYork
             pizza: pizza_hash
         }
     
-        boat.add_item(boat_items[:fire_axe])
-        boat.add_item(boat_items[:bird_seed])
-        boat.add_item(boat_items[:pizza])
+        boat.add_item boat_items[:fire_axe]
+        boat.add_item boat_items[:bird_seed]
+        boat.add_item boat_items[:pizza]
     
-        puts "\n" * 20
+        puts "\n" * 50
         puts "Look around your sinking vessel and you will be presented with a number of options that could possibly save your life. Quick there's not much time!"
     
         player_direction = "N"
@@ -263,9 +263,9 @@ module NewYork
                 boat.print_north_direction
         
                 print ": "
-                choice = gets().strip().to_i() 
-                puts "\n" * 20
-                location = boat.north_choice(choice, player)
+                choice = gets.strip.to_i
+                puts "\n" * 50
+                location = boat.north_choice choice, player
                 if location
                     player_direction = location
                 end
@@ -276,10 +276,10 @@ module NewYork
                 
                 boat.print_east_direction
                 print ": "
-                choice = gets().strip().to_i() # Check input is good 
-                puts "\n" * 20
+                choice = gets.strip.to_i
+                puts "\n" * 50
     
-                location = boat.east_choice(choice, player)
+                location = boat.east_choice choice, player
                 if location == "Game Over, your journey has come to an end!"
                     puts location
                     game_over = true
@@ -293,10 +293,10 @@ module NewYork
                 boat.print_south_direction
                 
                 print ": "
-                choice = gets().strip().to_i() # Check input is good 
-                puts "\n" * 20
+                choice = gets.strip.to_i # Check input is good 
+                puts "\n" * 50
     
-                location = boat.south_choice(choice, player)
+                location = boat.south_choice choice, player
                 if location == "exit"
                     trapped = false
                 elsif location
@@ -308,10 +308,10 @@ module NewYork
                 boat.print_west_direction
     
                 print ": "
-                choice = gets().strip().to_i() 
-                puts "\n" * 20
+                choice = gets.strip.to_i 
+                puts "\n" * 50
                 
-                location = boat.west_choice(choice, player)
+                location = boat.west_choice choice, player
                 if location
                     player_direction = location
                 end
@@ -325,35 +325,35 @@ module NewYork
         end
     end
 
-    def self.roadblock1(player)
+    def self.roadblock1 player
     
         puts "As you were making your way out of Central Park you have come to a roadblock.  It is the old pigeon Lady from the movie Home Alone, she is blocking your path and you need to get rid of the pidgeons somehow. Wouldn't bird seed be useful here?"
     
         continue = 0
         while continue != 1
             print "Press 1 to continue: "
-            continue = gets.strip.to_i()
-            puts "\n" * 20
+            continue = gets.strip.to_i
+            puts "\n" * 50
         end
     
-        if player.is_in_inventory?("Bird Seed")
+        if player.is_in_inventory? "Bird Seed"
             puts "Winner Winner, Pidgeon Dinner!! You have distracted the pidgeons away from the path with the bird seed and you can make your way to the airport!"
         else 
            
-            random_number = rand(1..5)
+            random_number = rand 1..5
     
             answer = 1
             while answer <= 1 || answer > 5
                 puts "The old pidgeon lady has given you an ultimatum: Guess my number between 1 and 5 that is in my head. If you lose I will set my pidgeons on you!"
                 print ": "
-                answer = gets.strip.to_i()
+                answer = gets.strip.to_i
             end
     
             if answer == random_number
-                player.update_score(50)
+                player.update_score 50
                 puts "The old pidgeon lady has had a change of heart and gives you a warm hug and sends you on your way with a bonus point increase of 50." + " Your total is now: #{player.score}".green
             else
-                player.change_health(-25)
+                player.change_health -25
                 puts "The pidgeons are set loose and peck you over and over. Looks like you got a case of the bird flu. Minus 25 hearts." + " Your health is now at: #{player.health} hearts.".red
             end
         end
@@ -361,8 +361,8 @@ module NewYork
         continue = 0
         while continue != 1
             print "Press 1 to continue: "
-            continue = gets.strip.to_i()
-            puts "\n" * 20
+            continue = gets.strip.to_i
+            puts "\n" * 50
         end
     end
 end

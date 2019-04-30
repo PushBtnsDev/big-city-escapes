@@ -1,17 +1,17 @@
 class EscapeRoom
 
-    attr_reader(:name, :items)
+    attr_reader :name, :items
 
-    def initialize(name)
+    def initialize name
         @name = name
         @items = []
     end
 
-    def add_item(item)
+    def add_item item
         @items << item
     end
 
-    def is_in_items?(item)
+    def is_in_items? item
         # item is a string
 
         @items.each do |hash|
@@ -22,16 +22,16 @@ class EscapeRoom
         return false
     end
 
-    def remove_item(item)
+    def remove_item item
         # Removes 'item' from @items if 'item' is in @items
         @items.each_index do |index|
             if @items[index][:item] == item
-                @items.delete_at(index)
+                @items.delete_at index
             end
         end
     end
 
-    def to_s()
+    def to_s
         return "#{@name} has these items: #{@items}"
     end
 end
@@ -39,19 +39,19 @@ end
 
 class Player
 
-    attr_reader(:name, :health, :score)
-    def initialize(name)
+    attr_reader :name, :health, :score
+    def initialize name
         @name = name
         @inventory = []
         @health = 100
         @score = 0
     end
 
-    def add_item(item)
+    def add_item item
         @inventory << item
     end
 
-    def change_health(increment)
+    def change_health increment
 
         if @health + increment <= 0
             return "Game Over, your journey has come to an end!"
@@ -60,11 +60,11 @@ class Player
         return nil
     end
 
-    def update_score(increment)
+    def update_score increment
         @score += increment
     end
 
-    def is_in_inventory?(item)
+    def is_in_inventory? item
         # item is a string
         @inventory.each do |inventory_item|
             if inventory_item == item
@@ -74,7 +74,7 @@ class Player
         return false
     end
 
-    def inv_list()
+    def inv_list
 
         if @inventory.length < 1
             return "You have nothing yet!"

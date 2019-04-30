@@ -383,6 +383,3 @@ module London
         end
     end
 end
-
-greg = Player.new "Greg"
-London.london_dungeon greg
